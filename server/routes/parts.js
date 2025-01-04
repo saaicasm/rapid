@@ -1,24 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {createPart} = require('../controllers/partcontroller');
+const {createPart, getAllParts, getPartById, deletePart, updatePart} = require('../controllers/partcontroller');
 
-router.get('/', (req, res) => {
-    res.json({take : "This is World Parts"});
-});
-
-router.get('/:id', (req, res) => {
-    res.json({take : `This is Part number ${req.params.id}`});
-});
-
-router.post('/:id', createPart);
-
-router.delete('/:id', (req, res) => {
-    res.json({take : `Delete Part number ${req.params.id}`});
-});
-
-
-router.patch('/:id', (req, res) => {
-    res.json({take : `Update Part number ${req.params.id}`});
-});
+router.get('/', getAllParts);
+router.get('/:id', getPartById);
+router.post('/', createPart);
+router.delete('/:id', deletePart); 
+router.patch('/:id', updatePart);
 
 module.exports = router;
