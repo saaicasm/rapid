@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {createPart} = require('../controllers/partcontroller');
 
 router.get('/', (req, res) => {
     res.json({take : "This is World Parts"});
@@ -9,10 +10,7 @@ router.get('/:id', (req, res) => {
     res.json({take : `This is Part number ${req.params.id}`});
 });
 
-router.post('/:id', (req, res) => {
-    let data = req.body;
-    res.json({data: data});
-});
+router.post('/:id', createPart);
 
 router.delete('/:id', (req, res) => {
     res.json({take : `Delete Part number ${req.params.id}`});
