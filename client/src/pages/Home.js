@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import PartDetails from "../components/PartDetails";
+import PartForm from "../components/PartForm";
 const Home = () => {
 
 const [parts, setParts] = useState([]);
@@ -25,6 +26,9 @@ useEffect(() => {
                 {parts.map(part => (
                     <PartDetails key={part._id} part={part} />
                 ))}
+           </div>
+           <div className="form">
+                <PartForm/>
            </div>
         </div>
     );
