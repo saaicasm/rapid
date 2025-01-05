@@ -1,7 +1,7 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-/* layout */
+
 :root{
   --main-bg-color: #1f1f1f;
   --main-text-color: #e0e0e0;
@@ -44,4 +44,33 @@ header a{
 .container{
   max-width: 1400px;
   margin: 0 auto;
+}
+
+/* homepage */
+
+.home{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.part-details{
+  background: #121212;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.part-details h4{
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: #dfe96c;
+}
+
+.part-details p{
+  margin:0 10 0 10px;
+  font-size: 0.9em;
+  color:#e0e0e0;
 }

@@ -7,7 +7,7 @@ const Navbar = () => {
                     <h1>
                         Sysint
                     </h1>
-                </Link>
+                </Link>x
             </div>
         </header>
     )};
