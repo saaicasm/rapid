@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // get all parts
 const getAllParts = async (req, res) => {
     const parts = await Part.find({}).sort({createdAt: -1});
-    res.status(200).json({parts});
+    res.status(200).json(parts);
 }
 
 
@@ -21,7 +21,7 @@ const getPartById = async (req, res) => {
     if(!part){
         return res.status(404).json({message: 'Part not found'});
     }
-    res.status(200).json({part});
+    res.status(200).json(part);
 }
 
 
@@ -67,7 +67,7 @@ const updatePart = async(req, res) => {
     if(!part){
         return res.status(400).json({message: 'Part not found'});
     }
-    res.status(200).json({part});
+    res.status(200).json(part);
 }
 
 
