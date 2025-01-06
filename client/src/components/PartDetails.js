@@ -16,11 +16,19 @@ const PartDetails = ({part}) => {
 
     return (
         <div className="part-details">
-            <h4><strong>Part Number: </strong>{part.partNumber}</h4>
-            <p><strong>Manufacturer: </strong>{part.manufacturer}</p>
-            <p><strong>Description: </strong>{part.description}</p>
-            <p>{part.createdAt}</p>
-            <button onClick={handleDelete}> Delete Part</button>
+            <h4 className="part-number">
+                <strong>Part Number: </strong>{part.partNumber}
+            </h4>
+            
+            <div className="part-info">
+                <p><strong>Manufacturer: </strong>{part.manufacturer}</p>
+                <p><strong>Description: </strong>{part.description}</p>
+                <p><strong>Created At: </strong>{new Date(part.createdAt).toLocaleDateString()}</p>
+            </div>
+    
+            <div className="action-button">
+                <button onClick={handleDelete}>Delete Part</button>
+            </div>
         </div>
     )
 }
