@@ -12,7 +12,10 @@ const partsReducer = (state, action) => {
             return {
                 parts: [action.payload, ...state.parts]
             }
-
+        case 'DELETE_PART':
+            return {
+                parts: state.parts.filter(part => part._id !== action.payload._id)
+            }
         default:
             return state;
     }
