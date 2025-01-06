@@ -16,6 +16,7 @@ const Home = () => {
             
             if(response.ok) {       
                 dispatch({type:'SET_PARTS', payload: json});
+                
             }
         };
 
@@ -25,11 +26,11 @@ const Home = () => {
 
         return (
             <div className="home">
-            <div className="parts">
-                    {parts && parts.map(part => (
-                        <PartDetails key={part._id} part={part} />
-                    ))}
-            </div>
+                <div className="parts">
+                        {parts && parts.map((part) => (
+                            <PartDetails key={part._id} part={part} />
+                        ))}
+                </div>
             <div className="form">
                     <PartForm/>
             </div>

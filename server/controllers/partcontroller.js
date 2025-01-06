@@ -32,7 +32,7 @@ const createPart = async (req, res) => {
 
     try {
         const part = await Part.create({partNumber, manufacturer, description});
-        res.status(200).json({part});
+        res.status(200).json(part);
     }catch(err){
         console.log(err);
         res.status(400).json({error: err.message});
@@ -51,7 +51,7 @@ const deletePart = async (req, res) => {
     if(!part){
         return res.status(404).json({message: 'Part not found'});
     }
-    res.status(200).json({message: 'Part deleted successfully'});
+    res.status(200).json(part);
 }
 
 

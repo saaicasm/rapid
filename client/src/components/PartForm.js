@@ -1,6 +1,7 @@
 import { useState } from 'react';
-
+import { usePartsContext } from '../hooks/usePartsContext';
 const PartForm = () => {
+    const {dispatch} = usePartsContext();
     const [partNumber, setPartNumber] = useState('');
     const [manufacturer, setManufacturer] = useState('');
     const [description, setDescription] = useState('');
@@ -16,24 +17,26 @@ const PartForm = () => {
         e.preventDefault();
         
         const newPart = { partNumber, manufacturer, description };
-        const json = JSON.stringify(newPart);
 
         const response = await fetch('/api/parts', {
             method:'POST',
-            body: json,
+            body: JSON.stringify(newPart),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-
+        const data = await response.json();
+        
         if(response.ok){
             setPartNumber('');
             setManufacturer('');
             setDescription('');
             console.log('Part added');
             setSuccess('Part added successfully');
+            dispatch({type:'ADD_PART', payload: data});
+            
         }
-        const data = await response.json();
+       
 
         if(!response.ok){
             setError(data.error)

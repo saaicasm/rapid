@@ -75,6 +75,16 @@ header a{
   color:#e0e0e0;
 }
 
+.part-details button{
+  background: #e9926c;
+  border: 0;
+  color: #070707;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 /* new part form */
 
@@ -96,9 +106,9 @@ input {
 }
 
 form button {
-  background: #333;
+  background: #dfe96c;
   border: 0;
-  color: #fff;
+  color: #070707;
   padding: 10px;
   font-family: 'Courier New', Courier, monospace;
   border-radius: 5px;
