@@ -27,10 +27,17 @@ const PartForm = () => {
         });
         const data = await response.json();
         
+        if(!response.ok){
+            setError(data.error)
+            setEmptyFields(data.emptyFields);
+            console.log('Error adding part');
+        }
+
         if(response.ok){
             setPartNumber('');
             setManufacturer('');
             setDescription('');
+            setError(null);
             setEmptyFields([]);
             console.log('Part added');
             setSuccess('Part added successfully');
@@ -39,11 +46,7 @@ const PartForm = () => {
         }
        
 
-        if(!response.ok){
-            setEmptyFields(data.emptyFields);
-            setError(data.error)
-            console.log('Error adding part');
-        }
+
 
         
         console.log(data);

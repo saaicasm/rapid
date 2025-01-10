@@ -1,4 +1,6 @@
 import { usePartsContext } from '../hooks/usePartsContext';
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow';
+
 
 const PartDetails = ({part}) => {
     const {dispatch} = usePartsContext();
@@ -16,6 +18,7 @@ const PartDetails = ({part}) => {
 
     return (
         <div className="part-details">
+<<<<<<< HEAD
             <h4 className="part-number">
                 <strong>Part Number: </strong>{part.partNumber}
             </h4>
@@ -29,6 +32,13 @@ const PartDetails = ({part}) => {
             <div className="action-button">
                 <button onClick={handleDelete}>Delete Part</button>
             </div>
+=======
+            <h4><strong>Part Number: </strong>{part.partNumber}</h4>
+            <p><strong>Manufacturer: </strong>{part.manufacturer}</p>
+            <p><strong>Description: </strong>{part.description}</p>
+            <p>{formatDistanceToNow(new Date(part.createdAt), {addSuffix:true})}</p>
+            <button onClick={handleDelete}> Delete Part</button>
+>>>>>>> c733826 (finishing up)
         </div>
     )
 }
