@@ -7,7 +7,7 @@ const PartForm = () => {
     const [description, setDescription] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
-
+    const [emptyFields, setEmptyFields] = useState([]);
     const clearMsg = () => {
         setError(null);
         setSuccess(null);
@@ -31,6 +31,7 @@ const PartForm = () => {
             setPartNumber('');
             setManufacturer('');
             setDescription('');
+            setEmptyFields([]);
             console.log('Part added');
             setSuccess('Part added successfully');
             dispatch({type:'ADD_PART', payload: data});
@@ -39,6 +40,7 @@ const PartForm = () => {
        
 
         if(!response.ok){
+            setEmptyFields(data.emptyFields);
             setError(data.error)
             console.log('Error adding part');
         }
@@ -59,6 +61,7 @@ const PartForm = () => {
                 type="text" 
                 value={partNumber} 
                 onChange={(e) => setPartNumber(e.target.value)} 
+                className={emptyFields.includes('partNumber') ? 'empty' : ''}
             />
            
             <label>Manufacturer</label>
@@ -66,6 +69,7 @@ const PartForm = () => {
                 type="text" 
                 value={manufacturer} 
                 onChange={(e) => setManufacturer(e.target.value)} 
+                className={emptyFields.includes('manufacturer') ? 'empty' : ''}
             />
             
             <label>Description</label>
@@ -73,10 +77,11 @@ const PartForm = () => {
                 type="text" 
                 value={description} 
                 onChange={(e) => setDescription(e.target.value)} 
+                className={emptyFields.includes('description') ? 'empty' : ''}
             />
             
             <button>Add Part</button>
-            {error && <div className='error'>{error}</div>}
+            {error && <div className='error'>Please enter Valid Part details</div>}
             {success && <div className='success'>{success}</div>}
         </form>
 
