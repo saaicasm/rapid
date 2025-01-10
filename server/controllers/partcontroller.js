@@ -30,6 +30,21 @@ const getPartById = async (req, res) => {
 const createPart = async (req, res) => {
     const {partNumber, manufacturer, description} = req.body;
 
+    let emptyFields = [];
+
+    if(!partNumber){
+        emptyFields.push('partNumber');
+    }
+    if(!manufacturer){
+        emptyFields.push('manufacturer');
+    }
+    if(!description){
+        emptyFields.push('description');
+    }
+    if(emptyFields.length > 0){
+        return res.status(400).json({error: 'Please fill in all fields', emptyFields});
+    }
+
     try {
         const part = await Part.create({partNumber, manufacturer, description});
         res.status(200).json(part);
