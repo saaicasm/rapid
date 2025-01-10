@@ -132,4 +132,6 @@ div.success {
   border-radius: 5px;
   margin: 20px;
 }
-
+input.error {
+  border: 1px solid #d93e3e;
+}
